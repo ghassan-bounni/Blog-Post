@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Post;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,23 +19,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/posts', function () {
-    return view('posts');
+    return view('posts', [
+        'posts' => Post::all(),
+    ]);
 });
+
 Route::get('/posts/{post}', function ($slug) {
-    $path = __DIR__ . "/../resources/posts/{$slug}.html";
 
-    if (!file_exists($path)) {
-        // ddd("file does not exist");
-        // ddd($path);
-        // abort(404);
-        // return view('posts');
-        return redirect('/posts');
-    }
+    // $path = __DIR__ . "/../resources/posts/{$slug}.html";
 
-    // $post = file_get_contents($path);
+    // if (!file_exists($path)) {
+    //     // ddd("file does not exist");
+    //     // ddd($path);
+    //     // abort(404);
+    //     // return view('posts');
+    //     return redirect('/posts');
+    // }
 
-    $post = cache()->remember("posts.{$slug}", 5, fn () => file_get_contents($path));
+    // // $post = file_get_contents($path);
+
+    // $post = cache()->remember("posts.{$slug}", 5, fn () => file_get_contents($path));
 
 
-    return view('post', ['post' => $post]);
+    return view('post', [
+        'post' => Post::find($slug)
+    ]);
 })->where('post', '[a-z0-9_\-]+');
