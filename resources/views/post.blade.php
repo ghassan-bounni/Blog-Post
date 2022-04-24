@@ -7,7 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-  <?= $post ?>
+  <article>
+    <h1><?= $post -> title ?></h1>
+    <div>
+      <?= $post -> body ?>
+    </div>
+  </article>
   <a href="/posts">back</a>
 </body>
 </html>

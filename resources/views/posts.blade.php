@@ -19,7 +19,8 @@
         Esse labore doloribus quaerat repudiandae voluptate aliquid. Aliquam accusamus quod qui officia quasi nihil. Impedit dolor quibusdam, magni aliquam minus sint quas eius officia voluptatibus ipsa? Obcaecati sunt saepe vero.</p>
     </article> --}}
     <article>
-        <?= $post ?>
+        <h1><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a></h1>
+        <?= $post->excerpt ?>
     </article>
     <?php endforeach; ?>
 </body>

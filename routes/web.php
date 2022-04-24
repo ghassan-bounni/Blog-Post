@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
-use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,27 +19,11 @@ Route::get('/', function () {
 });
 Route::get('/posts', function () {
     return view('posts', [
-        'posts' => Post::all(),
+        'posts' => Post::all()
     ]);
 });
 
 Route::get('/posts/{post}', function ($slug) {
-
-    // $path = __DIR__ . "/../resources/posts/{$slug}.html";
-
-    // if (!file_exists($path)) {
-    //     // ddd("file does not exist");
-    //     // ddd($path);
-    //     // abort(404);
-    //     // return view('posts');
-    //     return redirect('/posts');
-    // }
-
-    // // $post = file_get_contents($path);
-
-    // $post = cache()->remember("posts.{$slug}", 5, fn () => file_get_contents($path));
-
-
     return view('post', [
         'post' => Post::find($slug)
     ]);
