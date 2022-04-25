@@ -49,7 +49,7 @@ class Post
     public static function all()
     {
         return
-            cache()->rememberForever('posts.all', function () {
+            cache()->remember('posts.all', 1200, function () {
 
                 return collect(File::files(resource_path('posts/')))
                     ->map(fn ($file) => YamlFrontMatter::parseFile(($file)))
