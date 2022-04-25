@@ -17,9 +17,6 @@ use App\Models\User;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/posts', function () {
     return view('posts', [
         // 'posts' => Post::latest()->with('category', 'author')->get()
         //we remove the with methode to make it eager loaded 
