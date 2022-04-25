@@ -2,7 +2,11 @@
         @foreach ($posts as $post )
     <article>
         <h1><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a></h1>
-        {{ $post->excerpt }}
+
+        <p><a href="#">{{$post->category->name}}</a></p>
+        <div>
+            {{ $post->excerpt }}
+        </div>
     </article>
     @endforeach
 </x-layout>
