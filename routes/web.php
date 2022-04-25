@@ -3,6 +3,7 @@
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,9 @@ Route::get('/', function () {
 });
 Route::get('/posts', function () {
     return view('posts', [
-        'posts' => Post::with('category')->get()
+        // 'posts' => Post::latest()->with('category', 'author')->get()
+        //we remove the with methode to make it eager loaded 
+        'posts' => Post::latest()->get()
     ]);
 });
 
@@ -32,6 +35,14 @@ Route::get('/posts/{post:slug}', function (Post $post) {
 
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('posts', [
+        // 'posts' => $category->posts->load('category', 'author')
         'posts' => $category->posts
+    ]);
+});
+
+Route::get('/authors/{author:username}', function (User $author) {
+    return view('posts', [
+        // 'posts' => $author->posts->load('category', 'author')
+        'posts' => $author->posts
     ]);
 });
