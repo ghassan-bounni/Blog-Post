@@ -20,9 +20,10 @@ Route::get('/', function () {
     return view('posts', [
         // 'posts' => Post::latest()->with('category', 'author')->get()
         //we remove the with methode to make it eager loaded 
-        'posts' => Post::latest()->get()
+        'posts' => Post::latest()->get(),
+        'categories' => Category::all(),
     ]);
-});
+})->name('Home');
 
 Route::get('/posts/{post:slug}', function (Post $post) {
     return view('post', [
@@ -33,13 +34,16 @@ Route::get('/posts/{post:slug}', function (Post $post) {
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('posts', [
         // 'posts' => $category->posts->load('category', 'author')
-        'posts' => $category->posts
+        'posts' => $category->posts,
+        'categories' => Category::all(),
+        'currentCategory' => $category
     ]);
-});
+})->name('category');
 
 Route::get('/authors/{author:username}', function (User $author) {
     return view('posts', [
         // 'posts' => $author->posts->load('category', 'author')
-        'posts' => $author->posts
+        'posts' => $author->posts,
+        'categories' => Category::all()
     ]);
 });

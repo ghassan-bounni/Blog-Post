@@ -22,12 +22,12 @@ class DatabaseSeeder extends Seeder
         Category::truncate();
 
         $users = User::factory(3)->create();
-        Category::factory(3)->create();
-        Post::factory()->create(['user_id' => $users->random()->id]);
-        Post::factory()->create(['user_id' => $users->random()->id]);
-        Post::factory()->create(['user_id' => $users->random()->id]);
-        Post::factory()->create(['user_id' => $users->random()->id]);
-        Post::factory()->create(['user_id' => $users->random()->id]);
-        Post::factory()->create(['user_id' => $users->random()->id]);
+        $categories = Category::factory(3)->create();
+        Post::factory()->create(['user_id' => $users->random()->id, 'category_id' => $categories->random()->id]);
+        Post::factory()->create(['user_id' => $users->random()->id, 'category_id' => $categories->random()->id]);
+        Post::factory()->create(['user_id' => $users->random()->id, 'category_id' => $categories->random()->id]);
+        Post::factory()->create(['user_id' => $users->random()->id, 'category_id' => $categories->random()->id]);
+        Post::factory()->create(['user_id' => $users->random()->id, 'category_id' => $categories->random()->id]);
+        Post::factory()->create(['user_id' => $users->random()->id, 'category_id' => $categories->random()->id]);
     }
 }
