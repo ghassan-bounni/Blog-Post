@@ -22,7 +22,7 @@ Route::get('/', [postController::class, 'index'])->name('Home');
 Route::get('/posts/{post:slug}', [postController::class, 'show']);
 
 
-//replace this route with advanced Eloquent Query Constraints in the Post model
+//replace these routes with advanced Eloquent Query Constraints in the Post model
 
 // Route::get('/categories/{category:slug}', function (Category $category) {
 //     return view('posts', [
@@ -33,10 +33,10 @@ Route::get('/posts/{post:slug}', [postController::class, 'show']);
 //     ]);
 // })->name('category');
 
-Route::get('/authors/{author:username}', function (User $author) {
-    return view('posts.index', [
-        // 'posts' => $author->posts->load('category', 'author')
-        'posts' => $author->posts,
+// Route::get('/authors/{author:username}', function (User $author) {
+//     return view('posts.index', [
+//         // 'posts' => $author->posts->load('category', 'author')
+//         'posts' => $author->posts,
 
-    ]);
-});
+//     ]);
+// });

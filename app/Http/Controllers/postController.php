@@ -29,7 +29,7 @@ class postController extends Controller
         return view('posts.index', [
             // 'posts' => Post::latest()->with('category', 'author')->get()
             //we remove the with methode to make it eager loaded 
-            'posts' => Post::latest()->filter(request(['search', 'category']))->get(),
+            'posts' => Post::latest()->filter(request(['search', 'category', 'author']))->get(),
         ]);
     }
 
