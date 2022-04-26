@@ -29,8 +29,9 @@ class postController extends Controller
         return view('posts', [
             // 'posts' => Post::latest()->with('category', 'author')->get()
             //we remove the with methode to make it eager loaded 
-            'posts' => Post::latest()->filter(request(['search']))->get(),
+            'posts' => Post::latest()->filter(request(['search', 'category']))->get(),
             'categories' => Category::all(),
+            'currentCategory' => Category::firstWhere('slug', request('category'))
         ]);
     }
 

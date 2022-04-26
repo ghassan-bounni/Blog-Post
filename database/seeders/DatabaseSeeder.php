@@ -21,13 +21,12 @@ class DatabaseSeeder extends Seeder
         Post::truncate();
         Category::truncate();
 
-        $users = User::factory(3)->create();
-        $categories = Category::factory(3)->create();
-        Post::factory()->create(['user_id' => $users->random()->id, 'category_id' => $categories->random()->id]);
-        Post::factory()->create(['user_id' => $users->random()->id, 'category_id' => $categories->random()->id]);
-        Post::factory()->create(['user_id' => $users->random()->id, 'category_id' => $categories->random()->id]);
-        Post::factory()->create(['user_id' => $users->random()->id, 'category_id' => $categories->random()->id]);
-        Post::factory()->create(['user_id' => $users->random()->id, 'category_id' => $categories->random()->id]);
-        Post::factory()->create(['user_id' => $users->random()->id, 'category_id' => $categories->random()->id]);
+        $users = User::factory(6)->create();
+
+        $categories = Category::factory(8)->create();
+
+        for ($i = 0; $i < 12; $i++) {
+            Post::factory()->create(['user_id' => $users->random()->id, 'category_id' => $categories->random()->id]);
+        }
     }
 }
