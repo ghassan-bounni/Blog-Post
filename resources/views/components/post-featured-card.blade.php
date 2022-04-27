@@ -27,8 +27,8 @@
                                 {!! $post->excerpt !!}
                         </div>
                        
-       <footer class="flex justify-between items-center mt-8">
-            <div class="flex items-center text-sm">
+       <footer class="sm:flex sm:justify-between sm:items-center mt-8">
+            <div class="flex items-center text-sm mb-2">
                 <img src="/images/lary-avatar.svg" alt="Lary avatar">
                         <div class="ml-3">
                             <a href="/?author={{$post->author->username}}">
