@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\postController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionsController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
@@ -21,6 +23,9 @@ Route::get('/', [postController::class, 'index'])->name('Home');
 
 Route::get('/posts/{post:slug}', [postController::class, 'show']);
 
+Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
+Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
+Route::post('logout', [SessionsController::class, 'destroy']);
 
 //replace these routes with advanced Eloquent Query Constraints in the Post model
 
