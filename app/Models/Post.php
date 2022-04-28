@@ -12,7 +12,7 @@ class Post extends Model
     protected $guarded = [];
 
     //we add with to the model to make it eager loaded
-    protected $with = ['category', 'author'];
+    protected $with = ['category', 'author', 'comments'];
 
     public function scopeFilter($query, array $filters)
     {
@@ -58,5 +58,10 @@ class Post extends Model
     public function author()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }
