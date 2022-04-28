@@ -25,7 +25,11 @@ Route::get('/posts/{post:slug}', [postController::class, 'show']);
 
 Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
-Route::post('logout', [SessionsController::class, 'destroy']);
+
+Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
+Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
+
+Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
 //replace these routes with advanced Eloquent Query Constraints in the Post model
 
