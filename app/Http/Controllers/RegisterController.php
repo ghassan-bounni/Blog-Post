@@ -18,7 +18,7 @@ class RegisterController extends Controller
         $user = User::create(request()->validate([
             'name' => ['required', 'min:3', 'max:255'],
             'username' => ['required', ValidationRule::unique('users', 'username'), 'min:3', 'max:255'],
-            'email' => ['required', 'email', ValidationRule::unique('users', 'username'), 'max:255'],
+            'email' => ['required', 'email', ValidationRule::unique('users', 'email'), 'max:255'],
             'password' => ['required', 'min:7', 'max:255'],
         ]));
 

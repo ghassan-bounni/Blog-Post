@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\postController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
-use App\Models\Category;
+
 use Illuminate\Support\Facades\Route;
-use App\Models\Post;
-use App\Models\User;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +20,13 @@ use App\Models\User;
 |
 */
 
+
 Route::get('/', [postController::class, 'index'])->name('Home');
 
 Route::get('/posts/{post:slug}', [postController::class, 'show']);
 Route::post('/posts/{post:slug}/comments', [CommentController::class, 'store']);
+
+Route::post('newsletter', [NewsletterController::class, 'subscribe']);
 
 Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
