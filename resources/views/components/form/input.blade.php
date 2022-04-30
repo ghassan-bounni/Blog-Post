@@ -4,7 +4,7 @@
     <x-form.label name="{{ $name }}" />
 
      <input
-        class="border border-gray-400 p-2 w-full"
+        class="border border-gray-300 p-2 w-full rounded"
         type="{{ $type }}"
         id="{{ $name }}"
         name="{{ $name }}"

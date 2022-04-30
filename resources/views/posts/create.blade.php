@@ -1,8 +1,8 @@
 <x-layout>
-        <section class="px-6 py-8">
-        <main class="max-w-lg mx-auto mt-10 bg-gray-100  border border-gray-200  p-6 rounded-xl">
-            <h1 class="text-center font-bold text-xl">Publish New Post</h1>
-         <form action="/admin/posts" method="post" class="mt-10" enctype="multipart/form-data">
+
+    <x-setting heading="Publish New Post">
+
+        <form action="/admin/posts" method="post" class="mt-10" enctype="multipart/form-data">
                 @csrf
                 <x-form.input name="title" />
 
@@ -19,6 +19,7 @@
                    <select
                                 id="category_id"
                                 name="category_id"
+                                class="rounded  p-2"
                                 required
                                 >
 
@@ -40,6 +41,6 @@
                                     </x-submit-button>
                             </div>
             </form>
-            </main>
-        </section>
+
+    </x-setting>
 </x-layout>

@@ -10,9 +10,9 @@
                     
                 <x-form.input name="username" />
 
-                <x-form.input name="email" type='email'/>
+                <x-form.input name="email" type='email' />
 
-                <x-form.input name="password" type='password'/>
+                <x-form.input name="password" type='password' autocomplete="new-password"/>
 
                         <div class="mb-6">       
                                     <x-submit-button>
