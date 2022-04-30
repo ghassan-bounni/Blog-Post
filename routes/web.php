@@ -36,6 +36,9 @@ Route::post('sessions', [SessionsController::class, 'store'])->middleware('guest
 
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
+Route::get('admin/posts/create', [postController::class, 'create'])->middleware('admin');
+Route::post('admin/posts', [postController::class, 'store'])->middleware('admin');
+
 //replace these routes with advanced Eloquent Query Constraints in the Post model
 
 // Route::get('/categories/{category:slug}', function (Category $category) {

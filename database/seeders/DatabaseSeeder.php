@@ -3,9 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,10 +18,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
+        Schema::disableForeignKeyConstraints();
         User::truncate();
-        Post::truncate();
         Category::truncate();
+        Post::truncate();
+        Comment::truncate();
+        Schema::enableForeignKeyConstraints();
 
         $users = User::factory(6)->create();
 

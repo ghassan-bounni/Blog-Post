@@ -8,15 +8,15 @@
                             </header>
     
                             <div class="mt-6">
-                                <textarea name="body"  class="w-full text-sm focus:outline-none focus:ring" rows="5" placeholder="Quick, think of something to say!" required></textarea>
+                                <textarea name="body"  class="w-full text-sm focus:outline-none " rows="5" placeholder="Quick, think of something to say!" required></textarea>
                                 @error('body')
                                     <span class="text-xs text-red-500">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="flex justify-end mt-6 pt-6 border-t border-gray-200">
-                                <button type="submit" class="bg-blue-500 text-white uppercase font-semibold text-xs py-2 px-10 rounded-2xl hpver:bg-blue-600">
+                                <x-submit-button>
                                     Post
-                                </button>
+                                </x-submit-button>
                             </div>
                         </form>
                     </x-panel>
