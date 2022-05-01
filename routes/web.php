@@ -29,36 +29,25 @@ Route::post('/posts/{post:slug}/comments', [CommentController::class, 'store']);
 
 Route::post('newsletter', [NewsletterController::class, 'subscribe']);
 
-Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
-Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
+Route::middleware('guest')->group(function () {
+    Route::get('register', [RegisterController::class, 'create']);
+    Route::post('register', [RegisterController::class, 'store']);
 
-Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
-Route::post('sessions', [SessionsController::class, 'store'])->middleware('guest');
+    Route::get('login', [SessionsController::class, 'create']);
+    Route::post('sessions', [SessionsController::class, 'store']);
+});
 
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
-Route::post('admin/posts', [AdminpostController::class, 'store'])->middleware('admin');
-Route::get('admin/posts/create', [AdminpostController::class, 'create'])->middleware('admin');
-Route::get('admin/posts', [AdminPostController::class, 'index'])->middleware('admin');
-Route::get('admin/posts/{post}/edit', [AdminPostController::class, 'edit'])->middleware('admin');
-Route::patch('admin/posts/{post}', [AdminPostController::class, 'update'])->middleware('admin');
-Route::delete('admin/posts/{post}', [AdminPostController::class, 'destroy'])->middleware('admin');
+Route::middleware('admin')->group(function () {
 
-//replace these routes with advanced Eloquent Query Constraints in the Post model
+    // Use resource() to generate the routes for the admin post controller
+    Route::resource('admin/posts', AdminPostController::class)->except('show');
 
-// Route::get('/categories/{category:slug}', function (Category $category) {
-//     return view('posts', [
-//         // 'posts' => $category->posts->load('category', 'author')
-//         'posts' => $category->posts,
-//         'categories' => Category::all(),
-//         'currentCategory' => $category
-//     ]);
-// })->name('category');
-
-// Route::get('/authors/{author:username}', function (User $author) {
-//     return view('posts.index', [
-//         // 'posts' => $author->posts->load('category', 'author')
-//         'posts' => $author->posts,
-
-//     ]);
-// });
+    // Route::post('admin/posts', [AdminpostController::class, 'store']);
+    // Route::get('admin/posts/create', [AdminpostController::class, 'create']);
+    // Route::get('admin/posts', [AdminPostController::class, 'index']);
+    // Route::get('admin/posts/{post}/edit', [AdminPostController::class, 'edit']);
+    // Route::patch('admin/posts/{post}', [AdminPostController::class, 'update']);
+    // Route::delete('admin/posts/{post}', [AdminPostController::class, 'destroy']);
+});
