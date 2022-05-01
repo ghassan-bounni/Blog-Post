@@ -6,9 +6,9 @@
                 {{-- Cross Site Request Forgery  
                  "prevents faking a request from one site to another"--}}
                 @csrf
-                        <x-form.input name="email" type='email' autocomplete="username/>
+                        <x-form.input name="email" type='email' autocomplete="username" required/>
 
-                        <x-form.input name="password" type='password' autocomplete="current-password"/>
+                        <x-form.input name="password" type='password' autocomplete="current-password" required/>
 
                         <div class="mb-6">       
                                     <x-submit-button>

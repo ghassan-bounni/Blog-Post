@@ -33,8 +33,10 @@
                         <button class="text-xs font-bold">Welcome, {{ auth()->user()->name }} !</button>
                     </x-slot>
 
-                    <x-dropdown-item href="/dashboard">Dashboard</x-dropdown-item>
+                    @if (auth()->user()->username == 'ghassan')   
+                    <x-dropdown-item href="/admin/posts">All Posts</x-dropdown-item>
                     <x-dropdown-item href="/admin/posts/create" :active="request()->is('admin/posts/create')">New Post</x-dropdown-item>
+                    @endif
                     <x-dropdown-item href="#" x-data="{}" 
                         @click.prevent="document.querySelector('#logout-form').submit()" 
                     >

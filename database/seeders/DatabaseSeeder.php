@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
 
         $categories = Category::factory(8)->create();
 
-        for ($i = 0; $i < 12; $i++) {
+        for ($i = 0; $i < 30; $i++) {
             Post::factory()->create(['user_id' => $users->random()->id, 'category_id' => $categories->random()->id]);
         }
     }

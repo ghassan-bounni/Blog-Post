@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\postController;
@@ -36,8 +37,12 @@ Route::post('sessions', [SessionsController::class, 'store'])->middleware('guest
 
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
-Route::get('admin/posts/create', [postController::class, 'create'])->middleware('admin');
-Route::post('admin/posts', [postController::class, 'store'])->middleware('admin');
+Route::post('admin/posts', [AdminpostController::class, 'store'])->middleware('admin');
+Route::get('admin/posts/create', [AdminpostController::class, 'create'])->middleware('admin');
+Route::get('admin/posts', [AdminPostController::class, 'index'])->middleware('admin');
+Route::get('admin/posts/{post}/edit', [AdminPostController::class, 'edit'])->middleware('admin');
+Route::patch('admin/posts/{post}', [AdminPostController::class, 'update'])->middleware('admin');
+Route::delete('admin/posts/{post}', [AdminPostController::class, 'destroy'])->middleware('admin');
 
 //replace these routes with advanced Eloquent Query Constraints in the Post model
 
