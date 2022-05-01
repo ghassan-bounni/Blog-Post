@@ -34,7 +34,7 @@
                     </x-slot>
 
                     @if (auth()->user()->username == 'ghassan')   
-                    <x-dropdown-item href="/admin/posts">All Posts</x-dropdown-item>
+                    <x-dropdown-item href="/admin/posts" :active="request()->is('admin/posts')">All Posts</x-dropdown-item>
                     <x-dropdown-item href="/admin/posts/create" :active="request()->is('admin/posts/create')">New Post</x-dropdown-item>
                     @endif
                     <x-dropdown-item href="#" x-data="{}" 
